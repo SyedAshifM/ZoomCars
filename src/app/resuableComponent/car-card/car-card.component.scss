@@ -1,0 +1,92 @@
+/* Style for the entire card section */
+.car-list-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for the image section */
+  .car-list-card-image {
+    height: 160px;
+    overflow: hidden;
+  }
+  
+  .car-list-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Style for the description section */
+  .car-list-card-description {
+    padding: 16px;
+  }
+  
+  /* Style for the reviews section */
+  .car-list-card-description-reviews {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .car-list-card-description-reviews-icon {
+    margin-right: 4px;
+  }
+  
+  .car-list-card-description-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  /* Style for the properties section */
+  .car-list-card-description-properties {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .car-list-card-description-properties-property {
+    background-color: #f0f0f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-right: 4px;
+  }
+  
+  .property-point {
+    width: 4px;
+    height: 4px;
+    background-color: #333;
+    border-radius: 50%;
+    margin-left: 4px;
+  }
+  
+  /* Style for the price and distance section */
+  .car-list-card-price-distance {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    margin-top: 25px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+  }
+  
+  .car-list-card-price {
+    flex: 1;
+  }
+  
+  /* Style for the distance icon */
+  .car-list-card-distance i {
+    margin-right: 4px;
+  }
+  
+  /* Style for the distance place */
+  .car-list-card-distance-place {
+    font-weight: bold;
+  }
+
+
+  

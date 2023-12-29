@@ -1,0 +1,38 @@
+<section _ngcontent-ng-c2775305540="" class="car-list-card">
+    <div _ngcontent-ng-c2775305540="" class="car-list-card-image" style="height: 160px;">
+        <img _ngcontent-ng-c2775305540="" [src]="carData?.imageUrl">
+    </div>
+    <div _ngcontent-ng-c2775305540="" class="car-list-card-description">
+        <div _ngcontent-ng-c2775305540="" class="car-list-card-description-reviews">
+            <div _ngcontent-ng-c2775305540="" class="car-list-card-description-reviews-icon"><i
+                    _ngcontent-ng-c2775305540="" aria-hidden="true" class="fa fa-star"></i></div>
+            <div _ngcontent-ng-c2775305540="" class="car-list-card-description-reviews-value"> 4.98 </div>
+            <div _ngcontent-ng-c2775305540="" class="car-list-card-description-reviews-count"></div>
+        </div>
+        <div _ngcontent-ng-c2775305540="" class="car-list-card-description-title"> {{carData?.brand}} {{carData?.name}}
+        </div>
+        <div _ngcontent-ng-c2775305540="" class="car-list-card-description-properties">
+            <div _ngcontent-ng-c2775305540="" class="car-list-card-description-properties-property"
+                *ngFor="let details of carData.carAccessoriess"> {{details.accessoriesTitle}} <div
+                    _ngcontent-ng-c2775305540="" class="property-point"></div>
+            </div>
+
+        </div>
+        <div _ngcontent-ng-c2775305540="" class="car-list-card-price-distance">
+            <div _ngcontent-ng-c2775305540="" class="car-list-card-price">
+                <div _ngcontent-ng-c2775305540="" class="car-list-card-price-availability-text"> {{carData?.registeredOn
+                    | date :'dd-MM-yyyy'}}
+                </div>
+                <div _ngcontent-ng-c2775305540="" class="car-list-card-price-title"> ₹ {{carData?.pricingDescription}}
+                </div>
+                <div _ngcontent-ng-c2775305540="" class="car-list-card-price-sub-title"></div>
+            </div>
+            <div _ngcontent-ng-c2775305540="" class="car-list-card-distance">
+                <i class="fa fa-location"></i>
+
+                <div _ngcontent-ng-c2775305540="" class="car-list-card-distance-place">
+                    <div _ngcontent-ng-c2775305540="" class="car-list-card-distance-place"> {{carData?.locationTitle}}
+                    </div>
+                </div>
+            </div>
+        </div>

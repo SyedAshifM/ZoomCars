@@ -1,0 +1,311 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap" rel="stylesheet">
+
+<div id="booking">
+    <form id="form">
+        <select  [(ngModel)]="fromLocation"   name="fromLocation"  class="form-control"  id="start">
+            <option value="">Pick Up Address</option>
+            <option *ngFor="let location of locations" [value]="location.locationId">{{location.title}}</option>
+        </select>
+
+        <select [(ngModel)]="toLocation"  name="toLocation"  class="form-control"  id="end">
+            <option value="">Drop Off Address</option>
+            <option *ngFor="let location of locations" [value]="location.locationId">{{location.title}}</option>
+        </select>
+        <div><button id="primaryButton" type="button" (click)="navigateToSearchPage()">FIND CARS</button></div>
+    </form>  
+</div>
+
+<div class="row">
+    <div class="col-12 text-center">
+        <h3>POPULAR CARS IN COIMBATORE</h3>
+    </div>
+</div>
+
+<div class="container car-list-home-container">
+    <div class="row car-list-home  ">
+        <div class="col-3" *ngFor="let car of popularCars" (click)="makeBooking(car.carId)">
+            <app-car-card [carData]="car"></app-car-card>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="car-list-home-container">
+    <div class="car-list-home">
+        <div class="row">
+            <div class="col-3">
+                <section class="car-list-card">
+                    <div class="car-list-card-image" style="height: 160px;"><img
+                            src="https://zoomcar-assets.zoomcar.com/425168/HostCarImage/host_car_image_42516882cb3091-a71f-4ebe-8966-fb4c01501fde.jpg20231017-55-1finoxu">
+                    </div>
+                    <div class="car-list-card-description">
+                        <div class="car-list-card-description-reviews">
+                            <div class="car-list-card-description-reviews-icon"><i class="fa fa-star" aria-hidden="true"></i></div>
+                            <div class="car-list-card-description-reviews-value">
+                                4.98
+                            </div>
+                            <div class="car-list-card-description-reviews-count">
+
+                            </div>
+                        </div>
+                        <div class="car-list-card-description-title">
+                            Maruti Suzuki Ertiga 2022
+                        </div>
+                        <div class="car-list-card-description-properties">
+                            <div class="car-list-card-description-properties-property">
+                                Manual
+                                <div class="property-point"></div>
+                            </div>
+                            <div class="car-list-card-description-properties-property">
+                                Petrol
+                                <div class="property-point"></div>
+                            </div>
+                            <div class="car-list-card-description-properties-property">
+                                7 Seats
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="car-list-card-price-distance">
+                        <div class="car-list-card-price">
+                            <div class="car-list-card-price-availability-text">
+                                Available from 20 November
+                            </div>
+                            <div class="car-list-card-price-title">
+                                ₹180/hr
+                            </div>
+                            <div class="car-list-card-price-sub-title">
+
+                            </div>
+                        </div>
+                        <div class="car-list-card-distance"> <img src="/img/icons_location.svg" alt="location">
+                            <div class="car-list-card-distance-place">
+                                Nagpur
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-3">
+                <section class="car-list-card">
+                    <div class="car-list-card-image" style="height: 160px;"><img
+                            src="https://zoomcar-assets.zoomcar.com/112574/HostCarImage/host_car_image_1125745a6986fa-b402-4f4a-8121-c74f62a33c8e.jpg20230207-4959-1e1v7t9">
+                    </div>
+                    <div class="car-list-card-description">
+                        <div class="car-list-card-description-reviews">
+                            <div class="car-list-card-description-reviews-icon"><i class="fa fa-star" aria-hidden="true"></i></div>
+                            <div class="car-list-card-description-reviews-value">
+                                4.98
+                            </div>
+                            <div class="car-list-card-description-reviews-count">
+
+                            </div>
+                        </div>
+                        <div class="car-list-card-description-title">
+                            Maruti Suzuki Ertiga 2022
+                        </div>
+                        <div class="car-list-card-description-properties">
+                            <div class="car-list-card-description-properties-property">
+                                Manual
+                                <div class="property-point"></div>
+                            </div>
+                            <div class="car-list-card-description-properties-property">
+                                Petrol
+                                <div class="property-point"></div>
+                            </div>
+                            <div class="car-list-card-description-properties-property">
+                                7 Seats
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="car-list-card-price-distance">
+                        <div class="car-list-card-price">
+                            <div class="car-list-card-price-availability-text">
+                                Available from 20 November
+                            </div>
+                            <div class="car-list-card-price-title">
+                                ₹180/hr
+                            </div>
+                            <div class="car-list-card-price-sub-title">
+
+                            </div>
+                        </div>
+                        <div class="car-list-card-distance"><img src="/img/icons_location.svg" alt="location">
+                            <div class="car-list-card-distance-place">
+                                Nagpur
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-3">
+                <section class="car-list-card">
+                    <div class="car-list-card-image" style="height: 160px;"><img
+                            src="https://zoomcar-assets.zoomcar.com/37471/HostCarImage/37471_host_car_image_374714405909e-83f5-4b42-a9b5-1c1e709ed612c1395525-74a8-4757-867d-b7f10c3e3bef.jpg">
+                    </div>
+                    <div class="car-list-card-description">
+                        <div class="car-list-card-description-reviews">
+                            <div class="car-list-card-description-reviews-icon"><i class="fa fa-star" aria-hidden="true"></i></div>
+                            <div class="car-list-card-description-reviews-value">
+                                4.98
+                            </div>
+                            <div class="car-list-card-description-reviews-count">
+
+                            </div>
+                        </div>
+                        <div class="car-list-card-description-title">
+                            Maruti Suzuki Ertiga 2022
+                        </div>
+                        <div class="car-list-card-description-properties">
+                            <div class="car-list-card-description-properties-property">
+                                Manual
+                                <div class="property-point"></div>
+                            </div>
+                            <div class="car-list-card-description-properties-property">
+                                Petrol
+                                <div class="property-point"></div>
+                            </div>
+                            <div class="car-list-card-description-properties-property">
+                                7 Seats
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="car-list-card-price-distance">
+                        <div class="car-list-card-price">
+                            <div class="car-list-card-price-availability-text">
+                                Available from 20 November
+                            </div>
+                            <div class="car-list-card-price-title">
+                                ₹180/hr
+                            </div>
+                            <div class="car-list-card-price-sub-title">
+
+                            </div>
+                        </div>
+                        <div class="car-list-card-distance"><img src="/img/icons_location.svg" alt="location">
+                            <div class="car-list-card-distance-place">
+                                Nagpur
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-3">
+                <section class="car-list-card">
+                    <div class="car-list-card-image" style="height: 160px;"><img
+                            src="https://zoomcar-assets.zoomcar.com/215785/HostCarImage/host_car_image_21578545bf5428-afb2-4a35-8b1e-bb0252398cbb.jpg20230403-42-qj222r">
+                    </div>
+                    <div class="car-list-card-description">
+                        <div class="car-list-card-description-reviews">
+                            <div class="car-list-card-description-reviews-icon"><i class="fa fa-star" aria-hidden="true"></i></div>
+                            <div class="car-list-card-description-reviews-value">
+                                4.98
+                            </div>
+                            <div class="car-list-card-description-reviews-count">
+
+                            </div>
+                        </div>
+                        <div class="car-list-card-description-title">
+                            Maruti Suzuki Ertiga 2022
+                        </div>
+                        <div class="car-list-card-description-properties">
+                            <div class="car-list-card-description-properties-property">
+                                Manual
+                                <div class="property-point"></div>
+                            </div>
+                            <div class="car-list-card-description-properties-property">
+                                Petrol
+                                <div class="property-point"></div>
+                            </div>
+                            <div class="car-list-card-description-properties-property">
+                                7 Seats
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="car-list-card-price-distance">
+                        <div class="car-list-card-price">
+                            <div class="car-list-card-price-availability-text">
+                                Available from 20 November
+                            </div>
+                            <div class="car-list-card-price-title">
+                                ₹180/hr
+                            </div>
+                            <div class="car-list-card-price-sub-title">
+
+                            </div>
+                        </div>
+                        <div class="car-list-card-distance"><img src="/img/icons_location.svg" alt="location">
+                            <div class="car-list-card-distance-place">
+                                Nagpur
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-3">
+                <section class="car-list-card">
+                    <div class="car-list-card-image" style="height: 160px;"><img
+                            src="https://zoomcar-assets.zoomcar.com/68914/HostCarImage/68914_host_car_image_6891416b2e1fa-7aaa-435e-bcca-52b7ffe7ece503ee0355-0656-40aa-9f79-0dae802ed52d.jpg">
+                    </div>
+                    <div class="car-list-card-description">
+                        <div class="car-list-card-description-reviews">
+                            <div class="car-list-card-description-reviews-icon"><i class="fa fa-star" aria-hidden="true"></i></div>
+                            <div class="car-list-card-description-reviews-value">
+                                4.98
+                            </div>
+                            <div class="car-list-card-description-reviews-count">
+
+                            </div>
+                        </div>
+                        <div class="car-list-card-description-title">
+                            Maruti Suzuki Ertiga 2022
+                        </div>
+                        <div class="car-list-card-description-properties">
+                            <div class="car-list-card-description-properties-property">
+                                Manual
+                                <div class="property-point"></div>
+                            </div>
+                            <div class="car-list-card-description-properties-property">
+                                Petrol
+                                <div class="property-point"></div>
+                            </div>
+                            <div class="car-list-card-description-properties-property">
+                                7 Seats
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="car-list-card-price-distance">
+                        <div class="car-list-card-price">
+                            <div class="car-list-card-price-availability-text">
+                                Available from 20 November
+                            </div>
+                            <div class="car-list-card-price-title">
+                                ₹180/hr
+                            </div>
+                            <div class="car-list-card-price-sub-title">
+
+                            </div>
+                        </div>
+                        <div class="car-list-card-distance"><img src="/img/icons_location.svg" alt="location">
+                            <div class="car-list-card-distance-place">
+                                Nagpur
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </div>
+
+</div>   -->
+
+
+ 
+

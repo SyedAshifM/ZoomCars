@@ -1,0 +1,298 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8">
+            <div class="row">
+                <div class="col-8">
+                    <div class="card" style="border: none;">
+                        <div class="card-body p-0"> <img style="border-radius: 10px;" [src]="carDeatils?.imageUrl">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <p> {{carDeatils?.brand}} {{carDeatils?.name}}
+                                <br>
+                                <small *ngFor="let items of carDeatils?.zoomCarAccessoriess"> {{items.accessoriesTitle}}
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-5">
+                                    <h6>From</h6>
+                                    <p>{{carDeatils?.registeredOn | date:'dd-MM-yyyy | hh:mm a'}}
+                                    </p>
+                                    <p> M. Wazalwar Driving School</p>
+                                </div>
+                                <div class="col-2">
+                                    <i style="font-size: 32px;padding-top: 38px;" class="fa  fa-chevron-right"
+                                        aria-hidden="true"></i>
+                                    <i style="font-size: 32px;padding-top: 38px;" class="fa  fa-chevron-right"
+                                        aria-hidden="true"></i>
+                                </div>
+                                <div class="col-5 text-end">
+                                    <h6>To</h6>
+                                    <p>04-12-2024 | 09:30
+                                    </p>
+                                    <p> M. Wazalwar Driving School</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>About the car</h4>
+                            <p>Easy to ride and comfortable for 4 peoples for long drives good music and noise free car
+                            </p>
+                            <div class="row">
+                                <div class="col-3 pt-2">
+                                    <i class="fa fa-car" aria-hidden="true"></i> Full boot space
+                                </div>
+                                <div class="col-3 pt-2">
+                                    <i class="fa fa-car" aria-hidden="true"></i> Bluetooth
+                                </div>
+                                <div class="col-3 pt-2">
+                                    <i class="fa fa-car" aria-hidden="true"></i> Toolkit
+                                </div>
+                                <div class="col-3 pt-2">
+                                    <i class="fa fa-car" aria-hidden="true"></i> Air Conditioning
+                                </div>
+
+                                <div class="col-3 pt-2">
+                                    <i class="fa fa-car" aria-hidden="true"></i> Music System
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Booking Details</h4>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="">From Location</label>
+                                    <select [(ngModel)]="bookingObj.fromLocationId" name="fromLocation"
+                                        class="form-control" id="start">
+                                        <option value="">Pick Up Address</option>
+                                        <option *ngFor="let location of locations" [value]="location.locationId">
+                                            {{location.title}}</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="col-6">
+                                    <label for="">To Location</label>
+                                    <select [(ngModel)]="bookingObj.toLocationId" name="toLocation" class="form-control"
+                                        id="end">
+                                        <option value="">Drop Location</option>
+                                        <option *ngFor="let location of locations" [value]="location.locationId">
+                                            {{location.title}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="">Date Of Travel</label>
+                                    <input [(ngModel)]="bookingObj.travelDate" type="date" class="form-control">
+                                </div>
+                                <div class="col-6">
+                                    <label for="">Travel Start Time</label>
+                                    <input [(ngModel)]="bookingObj.startTime" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="">Start Address</label>
+                                    <textarea [(ngModel)]="bookingObj.pickupAddress" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="">Alternate Contact</label>
+                                    <input [(ngModel)]="bookingObj.alternateContactNo" type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <!-- <div class="d-grid gap-2 pt-3">
+                                <button class="btn btn-success btn-lg" (click)="createBooking()" type="button">Book
+                                    Now</button>
+                            </div> -->
+                            <div class="d-grid gap-2 pt-3">
+                                <button *ngIf="!bookingSuccess" class="btn btn-success btn-lg" (click)="createBooking()" type="button">Book Now</button>
+                                <button *ngIf="bookingSuccess" class="btn btn-danger btn-lg" (click)="deleteBooking()" type="button">Delete Booking</button>
+                              </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-2">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="round" style="background-color: #0b21eb;">
+                                R
+                            </div>
+                        </div>
+                        <div class="col-10 tex">
+                            Ramesh
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p>I had a great experience with Zoom cars.
+                                Drove it for about 900kms in a week,
+                                It was an awesome experience.
+                            </p>
+                            <p>2 Days Ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="round" style="background-color: #0ff0e1;">
+                                PK
+                            </div>
+                        </div>
+                        <div class="col-10 tex">
+                            Pawan Kumar
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p>
+                                Picked up the car at midnight and the drop was at 8pm the next day. Paid less than what
+                                an Uber would have cost.
+                            </p>
+                            <p>1 Week Ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="round" style="background-color: #148ddd;">
+                                RK
+                            </div>
+                        </div>
+                        <div class="col-10 tex">
+                            Ramesh Karthikeyan
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p>I am very happy during pune-mahableshwar trip,Car was very good.cost of travel in budget
+                                overall very good.
+                            </p>
+                            <p>5 Days Ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="round" style="background-color: #a10deb;">
+                                A
+                            </div>
+                        </div>
+                        <div class="col-10 tex">
+                            Ajay
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p>The car was totally fine but dissapointed with the service. I had a very poor service
+                                Experience from Zoom Cars.
+                            </p>
+                            <p>3 Week Ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
